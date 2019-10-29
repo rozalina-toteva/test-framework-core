@@ -9,7 +9,7 @@ The sample code in this repository uses Sitefinity ODATA services to validate th
 
 # Getting Started
 
-This tutorial will guide you through configuring it to enable the execution of ODATA WCF services and create and execute integration tests using these services. It assumes you already have a working Sitefinity CMS instance.
+This tutorial will guide you through configuring Sitefinity CMS to enable the execution of ODATA WCF services and create and execute integration tests using these services. It assumes you already have a working Sitefinity CMS instance.
 
 ## System Requirements
 
