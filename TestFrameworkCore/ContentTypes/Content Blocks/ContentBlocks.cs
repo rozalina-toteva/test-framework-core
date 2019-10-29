@@ -7,7 +7,7 @@
         /// </summary>
         public ContentBlocks()
         {
-            this.EndpointUrl = "sf/system/contentitems";
+            this.EndpointUrl = "/sf/system/contentitems";
         }
 
         /// <summary>
