@@ -3,7 +3,7 @@
     public class News : Content
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="News"/> class.
+        /// Initializes a new instance of the <see cref="Events"/> class.
         /// </summary>
         public News()
         {
