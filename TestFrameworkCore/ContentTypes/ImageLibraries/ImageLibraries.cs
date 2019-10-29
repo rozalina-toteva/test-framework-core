@@ -1,13 +1,13 @@
-﻿namespace TestFrameworkCore.ContentTypes.Video_Libraries
+﻿namespace TestFrameworkCore.ContentTypes.ImageLibraries
 {
-    public class VideoLibraries : Content
+    public class ImageLibraries : Content
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoLibraries"/> class.
+        /// Initializes a new instance of the <see cref="ImageLibraries"/> class.
         /// </summary>
-        public VideoLibraries()
+        public ImageLibraries()
         {
-            this.EndpointUrl = "sf/system/videolibraries";
+            this.EndpointUrl = "/sf/system/albums";
         }
 
         /// <summary>
@@ -41,7 +41,7 @@
         }
 
         /// <summary>
-        /// Gets the DateCreated
+        /// Gets or sets the DateCreated
         /// </summary>
         public string DateCreated
         {
@@ -153,6 +153,36 @@
             set
             {
                 this.SetProperty("CoverId", value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the ResizeOnUpload
+        /// </summary>
+        public string ResizeOnUpload
+        {
+            get
+            {
+                return this.GetProperty("ResizeOnUpload");
+            }
+            set
+            {
+                this.SetProperty("ResizeOnUpload", value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the NewSize
+        /// </summary>
+        public string NewSize
+        {
+            get
+            {
+                return this.GetProperty("NewSize");
+            }
+            set
+            {
+                this.SetProperty("NewSize", value);
             }
         }
 

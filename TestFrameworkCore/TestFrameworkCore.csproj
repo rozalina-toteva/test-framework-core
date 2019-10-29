@@ -57,30 +57,40 @@
     <Compile Include="ContentTypes\Calendars\Calendars.cs" />
     <Compile Include="ContentTypes\Classifications\Classifications.cs" />
     <Compile Include="ContentTypes\Content Blocks\ContentBlocks.cs" />
-    <Compile Include="ContentTypes\Document Libraries\DocumentLibraries.cs" />
+    <Compile Include="ContentTypes\DocumentLibraries\DocumentLibraries.cs" />
     <Compile Include="ContentTypes\Documents\Documents.cs" />
+    <Compile Include="ContentTypes\MediaContent.cs" />
     <Compile Include="ContentTypes\Metadata\Metadata.cs" />
     <Compile Include="ContentTypes\Events\Events.cs" />
     <Compile Include="ContentTypes\Flat\Flat.cs" />
     <Compile Include="ContentTypes\Folders\Folders.cs" />
     <Compile Include="ContentTypes\Hierarchical\Hierarchical.cs" />
-    <Compile Include="ContentTypes\Image Libraries\ImageLibraries.cs" />
+    <Compile Include="ContentTypes\ImageLibraries\ImageLibraries.cs" />
     <Compile Include="ContentTypes\Images\Images.cs" />
     <Compile Include="ContentTypes\List Items\ListItems.cs" />
     <Compile Include="ContentTypes\Lists\Lists.cs" />
     <Compile Include="ContentTypes\News\News.cs" />
     <Compile Include="ContentTypes\Content.cs" />
     <Compile Include="ContentTypes\Pages\Pages.cs" />
-    <Compile Include="ContentTypes\Video Libraries\VideoLibraries.cs" />
+    <Compile Include="ContentTypes\VideoLibraries\VideoLibraries.cs" />
     <Compile Include="ContentTypes\Videos\Videos.cs" />
+    <Compile Include="MediaContentOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ContentOperations.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestResources\Media\digital_marketing.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="TestResources\Media\mobile-marketing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

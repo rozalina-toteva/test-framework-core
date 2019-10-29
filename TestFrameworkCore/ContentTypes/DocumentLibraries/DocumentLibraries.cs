@@ -1,4 +1,4 @@
-﻿namespace TestFrameworkCore.ContentTypes.Document_Libraries
+﻿namespace TestFrameworkCore.ContentTypes.DocumentLibraries
 {
     public class DocumentLibraries : Content
     {

@@ -1,13 +1,13 @@
 ﻿namespace TestFrameworkCore.ContentTypes.Images
 {
-    public class Images : Content
+    public class Images : MediaContent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Images"/> class.
         /// </summary>
         public Images()
         {
-            this.Url = "/sf/system/images";
+            this.EndpointUrl = "/sf/system/images";
         }
 
         /// <summary>

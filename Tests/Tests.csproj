@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\DynamicItems\DynamicItemsTests.cs" />
+    <Compile Include="Tests\Images\ImagesTests.cs" />
     <Compile Include="Tests\News\NewsTests.cs" />
     <Compile Include="Tests\Pages\PagesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
