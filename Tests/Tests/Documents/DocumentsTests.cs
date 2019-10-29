@@ -3,16 +3,16 @@ using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using TestFrameworkCore;
-using TestFrameworkCore.ContentTypes.ImageLibraries;
-using TestFrameworkCore.ContentTypes.Images;
+using TestFrameworkCore.ContentTypes.DocumentLibraries;
+using TestFrameworkCore.ContentTypes.Documents;
 
 namespace Tests
 {
     /// <summary>
-    /// Contains tests related to image albums and images.
+    /// Test class with tests related to document libraries and documents.
     /// </summary>
     [TestClass]
-    public class ImagesTests
+    public class DocumentsTests
     {
         /// <summary>
         /// Authenticates the rest requests.
@@ -24,16 +24,16 @@ namespace Tests
         }
 
         /// <summary>
-        /// Creates an image library and validates the successful creation.
+        /// Creates a document library and validates the successful creation.
         /// </summary>
         [TestMethod]
-        public void CreateImageLibrary()
+        public void CreateDocumentLibrary()
         {
             var libraryTitle = TestContentPrefix + Guid.NewGuid().ToString();
-            ImageLibraries library = new ImageLibraries();
+            DocumentLibraries library = new DocumentLibraries();
             library.Title = libraryTitle.ToString();
 
-            var operations = new ContentOperations<ImageLibraries>();
+            var operations = new ContentOperations<DocumentLibraries>();
             var response = operations.CreateDraft(library);
             Assert.AreEqual(201, (int)response.StatusCode);
 
@@ -46,21 +46,21 @@ namespace Tests
         /// Uploads an image.
         /// </summary>
         [TestMethod]
-        public void UploadImage()
+        public void UploadDocument()
         {
-            this.CreateImageLibrary();
+            this.CreateDocumentLibrary();
 
-            Images image = new Images();
-            image.Title = "TestImage";
-            image.ParentId = libraryId.ToString();
-            var operations = new MediaContentOperations<Images>();
-            var response = operations.Upload(image);
+            Documents document = new Documents();
+            document.Title = "TestDocument";
+            document.ParentId = libraryId.ToString();
+            var operations = new MediaContentOperations<Documents>();
+            var response = operations.Upload(document);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
-            image.ID = results.Id;
+            document.ID = results.Id;
 
-            var uploadedImage = operations.GetItem(image);
-            Assert.AreEqual(200, (int)uploadedImage.StatusCode);
+            var uploadedDocument = operations.GetItem(document);
+            Assert.AreEqual(200, (int)uploadedDocument.StatusCode);
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace Tests
         [TestCleanup]
         public void CleanUp()
         {
-            var operations = new ContentOperations<ImageLibraries>();
-            ImageLibraries library = new ImageLibraries();
+            var operations = new ContentOperations<DocumentLibraries>();
+            DocumentLibraries library = new DocumentLibraries();
             library.ID = libraryId;
             if (operations.GetItem(library).StatusCode == HttpStatusCode.OK)
             {

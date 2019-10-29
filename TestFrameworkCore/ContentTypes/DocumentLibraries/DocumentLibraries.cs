@@ -7,7 +7,7 @@
         /// </summary>
         public DocumentLibraries()
         {
-            this.EndpointUrl = "sf/system/documentlibraries";
+            this.EndpointUrl = "/sf/system/documentlibraries";
         }
 
         /// <summary>
