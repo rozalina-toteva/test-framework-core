@@ -59,9 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\Blogs\BlogsTests.cs" />
+    <Compile Include="Tests\ContentBlocks\ContentBlockTests.cs" />
     <Compile Include="Tests\DynamicItems\DynamicItemsTests.cs" />
     <Compile Include="Tests\Images\ImagesTests.cs" />
-    <Compile Include="Tests\Events\CalendarTests.cs" />
     <Compile Include="Tests\Events\EventsTests.cs" />
     <Compile Include="Tests\News\NewsTests.cs" />
     <Compile Include="Tests\Pages\PagesTests.cs" />
