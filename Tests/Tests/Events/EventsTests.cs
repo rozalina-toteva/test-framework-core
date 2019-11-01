@@ -24,6 +24,9 @@ namespace Tests
             AuthenticationHelper.Authenticate();
         }
 
+        /// <summary>
+        /// Creates a calendar and validates the successfull creation
+        /// </summary>
         [TestMethod]
         public void CreateCalendar()
         {
@@ -35,7 +38,7 @@ namespace Tests
             calendar.Color = "Blue";
 
             var response = operations.CreateDraft(calendar);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             Assert.AreEqual(calendar.Title, results.Title.ToString());
@@ -43,6 +46,41 @@ namespace Tests
 
             calendarId = results.Id;
             Assert.IsNotNull(eventId);
+        }
+
+        [TestMethod]
+        public void ModifyCalendar()
+        {
+            this.CreateCalendar();
+
+            var operations = new ContentOperations<Calendars>();
+
+            var calendar = new Calendars();
+            calendar.ID = calendarId;
+            calendar.Title = calendarTitle + "Updated";
+            calendar.Color = "Red";
+
+            var response = operations.Modify(calendar);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+
+            var results = JsonConvert.DeserializeObject<dynamic>(operations.GetItem(calendar).Content);
+            Assert.AreEqual(calendar.Title, results.Title.ToString());
+            Assert.AreEqual(calendar.Color, results.Color.ToString());
+        }
+
+        [TestMethod]
+        public void DeleteCalendar()
+        {
+            this.CreateCalendar();
+
+            Calendars calendar = new Calendars();
+            calendar.ID = calendarId;
+
+            var operations = new ContentOperations<Calendars>();
+
+            var response = operations.Delete(calendar);
+
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         /// <summary>
@@ -64,7 +102,7 @@ namespace Tests
             eventItem.ParentId = calendarId.ToString();
 
             var response = operations.CreateDraft(eventItem);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             Assert.AreEqual(eventItem.Title, results.Title.ToString());
@@ -87,10 +125,10 @@ namespace Tests
             eventItem.ID = eventId;
 
             var response = operations.GetItem(eventItem);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
             var result = operations.Publish(eventItem);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
         /// <summary>
@@ -107,7 +145,7 @@ namespace Tests
             eventItem.Title += "Updated";
 
             var response = operations.Modify(eventItem);
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
 
             response = operations.GetItem(eventItem);
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -128,7 +166,7 @@ namespace Tests
 
             var response = operations.Delete(eventItem);
 
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         /// <summary>

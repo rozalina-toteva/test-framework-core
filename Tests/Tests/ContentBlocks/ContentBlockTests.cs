@@ -37,7 +37,7 @@ namespace Tests
             contentBlock.Content = ContentBlockContent;
 
             var response = operations.CreateDraft(contentBlock);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             Assert.AreEqual(contentBlock.Title, results.Title.ToString());
@@ -61,7 +61,7 @@ namespace Tests
             contentBlockItem.Title += "Updated";
 
             var response = operations.Modify(contentBlockItem);
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
 
             response = operations.GetItem(contentBlockItem);
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -82,7 +82,7 @@ namespace Tests
 
             var response = operations.Delete(contentBlock);
 
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         /// <summary>

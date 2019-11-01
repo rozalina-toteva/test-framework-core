@@ -72,6 +72,7 @@
     <Compile Include="ContentTypes\News\News.cs" />
     <Compile Include="ContentTypes\Content.cs" />
     <Compile Include="ContentTypes\Pages\Pages.cs" />
+    <Compile Include="ContentTypes\Posts\Posts.cs" />
     <Compile Include="ContentTypes\VideoLibraries\VideoLibraries.cs" />
     <Compile Include="ContentTypes\Videos\Videos.cs" />
     <Compile Include="MediaContentOperations.cs" />

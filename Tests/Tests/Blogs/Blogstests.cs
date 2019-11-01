@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using TestFrameworkCore;
 using TestFrameworkCore.ContentTypes.Blogs;
+using TestFrameworkCore.ContentTypes.Posts;
 
 namespace Tests
 {
@@ -35,7 +36,7 @@ namespace Tests
             blogItem.Title = blogsTitle;
 
             var response = operations.CreateDraft(blogItem);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             Assert.AreEqual(blogItem.Title, results.Title.ToString());
@@ -58,7 +59,7 @@ namespace Tests
             blogItem.Title += "Updated";
 
             var response = operations.Modify(blogItem);
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
 
             response = operations.GetItem(blogItem);
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -79,7 +80,46 @@ namespace Tests
 
             var response = operations.Delete(blogItem);
 
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        [TestMethod]
+        public void CreateBlogPost()
+        {
+            this.CreateBlog();
+
+            Posts post = new Posts();
+            postTitle = TestContentPrefix + Guid.NewGuid().ToString();
+            post.Title = blogsTitle;
+            post.ParentId = blogId.ToString();
+            post.Content = PostContent;
+
+            var operations = new ContentOperations<Posts>();
+            operations.CreateDraft(post);
+
+            var response = operations.CreateDraft(post);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+
+            var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
+            Assert.AreEqual(post.Title, results.Title.ToString());
+
+            postId = results.Id;
+            Assert.IsNotNull(blogId);
+
+            response = operations.Publish(post);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [TestMethod]
+        public void ModifyBlogPost()
+        {
+
+        }
+
+        [TestMethod]
+        public void DeleteBlogPost()
+        {
+
         }
 
         /// <summary>
@@ -99,6 +139,9 @@ namespace Tests
 
         private const string TestContentPrefix = "sf_test";
         private static Guid blogId;
+        private static Guid postId;
         private static string blogsTitle;
+        private static string postTitle;
+        private static string PostContent = "The quick brown fox jumps over the lazy dog";
     }
 }

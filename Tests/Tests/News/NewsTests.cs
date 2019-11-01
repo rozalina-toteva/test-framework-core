@@ -36,7 +36,7 @@ namespace Tests
             newsItem.Content = NewsContent;
 
             var response = operations.CreateDraft(newsItem);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             Assert.AreEqual(newsItem.Title, results.Title.ToString());
@@ -58,10 +58,10 @@ namespace Tests
             newsItem.ID = newsId;
 
             var response = operations.GetItem(newsItem);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
             var result = operations.Publish(newsItem);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Tests
             newsItem.Title += "Updated";
 
             var response = operations.Modify(newsItem);
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
 
             response = operations.GetItem(newsItem);
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -99,7 +99,7 @@ namespace Tests
 
             var response = operations.Delete(newsItem);
 
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         /// <summary>

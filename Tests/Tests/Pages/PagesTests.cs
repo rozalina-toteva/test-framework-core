@@ -34,7 +34,7 @@ namespace Tests
 
             var operations = new ContentOperations<Pages>();
             var response = operations.CreateDraft(page);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             pageId = results.Id;
@@ -54,10 +54,10 @@ namespace Tests
             page.ID = pageId;
 
             var response = operations.GetItem(page);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
             var result = operations.Publish(page);
-            Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
         /// <summary>
@@ -72,7 +72,11 @@ namespace Tests
 
             var operations = new ContentOperations<Pages>();
             var response = operations.CreateDraft(page);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+
+            var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
+            pageId = results.Id;
+            Assert.IsNotNull(pageId);
         }
 
         /// <summary>
@@ -89,7 +93,7 @@ namespace Tests
             page.ID = pageId;
 
             var response = operations.Modify(page);
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
 
             response = operations.GetItem(page);
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -110,7 +114,7 @@ namespace Tests
 
             var response = operations.Delete(page);
 
-            Assert.AreEqual(204, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
         /// <summary>

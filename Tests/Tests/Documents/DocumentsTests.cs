@@ -35,7 +35,7 @@ namespace Tests
 
             var operations = new ContentOperations<DocumentLibraries>();
             var response = operations.CreateDraft(library);
-            Assert.AreEqual(201, (int)response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
             var results = JsonConvert.DeserializeObject<dynamic>(response.Content);
             libraryId = results.Id;
@@ -60,7 +60,7 @@ namespace Tests
             document.ID = results.Id;
 
             var uploadedDocument = operations.GetItem(document);
-            Assert.AreEqual(200, (int)uploadedDocument.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, (int)uploadedDocument.StatusCode);
         }
 
         /// <summary>
