@@ -1,4 +1,4 @@
-﻿namespace TestFrameworkCore.ContentTypes.Image_Libraries
+﻿namespace TestFrameworkCore.ContentTypes.ImageLibraries
 {
     public class ImageLibraries : Content
     {
@@ -7,7 +7,7 @@
         /// </summary>
         public ImageLibraries()
         {
-            this.EndpointUrl = "sf/system/albums";
+            this.EndpointUrl = "/sf/system/albums";
         }
 
         /// <summary>

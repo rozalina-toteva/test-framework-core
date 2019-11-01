@@ -8,7 +8,7 @@ using TestFrameworkCore.ContentTypes.News;
 namespace Tests
 {
     /// <summary>
-    /// Contains tests which aim to ensure the bare minimum for the Sitefinity News module.
+    /// CRUD operations for News.
     /// </summary>
     // [TestClass] attribute marks that the class contains test code to the testing framework
     [TestClass]

@@ -1,6 +1,6 @@
 ﻿namespace TestFrameworkCore.ContentTypes.Documents
 {
-    public class Documents : Content
+    public class Documents : MediaContent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Documents"/> class.

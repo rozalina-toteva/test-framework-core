@@ -1,13 +1,13 @@
-﻿namespace TestFrameworkCore.ContentTypes.Video_Libraries
+﻿namespace TestFrameworkCore.ContentTypes.DocumentLibraries
 {
-    public class VideoLibraries : Content
+    public class DocumentLibraries : Content
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoLibraries"/> class.
+        /// Initializes a new instance of the <see cref="DocumentLibraries"/> class.
         /// </summary>
-        public VideoLibraries()
+        public DocumentLibraries()
         {
-            this.EndpointUrl = "sf/system/videolibraries";
+            this.EndpointUrl = "/sf/system/documentlibraries";
         }
 
         /// <summary>
@@ -26,6 +26,17 @@
         }
 
         /// <summary>
+        /// Gets or sets the DateCreated
+        /// </summary>
+        public string DateCreated
+        {
+            get
+            {
+                return this.GetProperty("DateCreated");
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the Description
         /// </summary>
         public string Description
@@ -37,17 +48,6 @@
             set
             {
                 this.SetProperty("Description", value);
-            }
-        }
-
-        /// <summary>
-        /// Gets the DateCreated
-        /// </summary>
-        public string DateCreated
-        {
-            get
-            {
-                return this.GetProperty("DateCreated");
             }
         }
 
@@ -168,17 +168,13 @@
         }
 
         /// <summary>
-        /// Gets or sets the ChildrenCount
+        /// Gets the ChildrenCount
         /// </summary>
         public string ChildrenCount
         {
             get
             {
                 return this.GetProperty("ChildrenCount");
-            }
-            set
-            {
-                this.SetProperty("ChildrenCount", value);
             }
         }
     }

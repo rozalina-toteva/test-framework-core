@@ -8,7 +8,7 @@ using TestFrameworkCore.ContentTypes.Pages;
 namespace Tests
 {
     /// <summary>
-    /// Contains tests which aim to ensure the bare minimum for the Sitefinity Pages module.
+    /// CRUD operations for Pages.
     /// </summary>
     [TestClass]
     public class PagesTests
