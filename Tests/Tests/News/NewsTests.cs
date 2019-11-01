@@ -10,12 +10,14 @@ namespace Tests
     /// <summary>
     /// CRUD operations for News.
     /// </summary>
+    // [TestClass] attribute marks that the class contains test code to the testing framework
     [TestClass]
     public class NewsTests
     {
         /// <summary>
         /// Authenticates the rest requests.
         /// </summary>
+        // [TestInitialize] marks a method which executes before each test. Use it to connect and authenticate to the Sitefinity CMS instance
         [TestInitialize]
         public void TestInitialize()
         {
@@ -25,6 +27,8 @@ namespace Tests
         /// <summary>
         /// Creates a draft news item and validates the successful creation.
         /// </summary>
+        // Each [TestMethod] should contain a concrete, self-contained test scenario.
+        // This one creates a draft news item and validates the successful creation.
         [TestMethod]
         public void CreateNews()
         {
@@ -105,6 +109,7 @@ namespace Tests
         /// <summary>
         /// Cleans up any leftover data.
         /// </summary>
+        // The [TestCleanup] attribute marks code which is executed after every test method. Use it to clean up the state in the Sitefinity CMS instance and ensure that no tests alter the state of Sitefinity after their completion.
         [TestCleanup]
         public void CleanUp()
         {
