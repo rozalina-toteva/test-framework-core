@@ -11,7 +11,7 @@ This GitHub repository contains the following projects:
 
 ### `TestFrameworkCore\TestFrameworkCore.csproj`
 
-This project contains the infrastructure code, which enables writing tests using the Sitefinity WCF RESTful services. It also includes wrappers to expose data for the built-in content types to the tests you write.
+This project contains the infrastructure code, which enables writing tests using the Sitefinity OData RESTful services. It also includes wrappers to expose data for the built-in content types to the tests you write.
 
 In `ContentTypes` project folder, you can find wrappers around the built-in Sitefinity CMS content types. The Sitefinity team provides and supports them. You can model wrappers you write for your content types based on the code contained here.
 
