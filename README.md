@@ -37,12 +37,12 @@ To use the sample, you need:
 To execute the provided tests, perform the following:
 
 1. Setup Sitefinity CMS with OData web services. To do this, perform the following:
-   1. Log in Sitefinity CMS backend with an administrative account.
-   2. In Sitefinity CMS backend, navigate to _Administration_ » _Settings_ » _Advanced_ » _Web services_.
-   3. Ensure that the _Default_ web service is installed and active for all content types. For more information, see [Configure the Types of a service](https://www.progress.com/documentation/sitefinity-cms/configure-the-types).
-   4. To authenticate the test framework requests, create a request access token for the web services. For more information, see [Request access token for calling web services](https://www.progress.com/documentation/sitefinity-cms/request-access-token-for-calling-web-services) with the additional step outlined below.
-   5. In Sitefinity CMS backend, navigate to _Administration_ » _Settings_ » _Advanced_ » _Authentication_ » _SecurityTokenService_ »  _IdentityServer_ » _Clients_ » <The client you have just created>. 
-   6. Ensure that the _Allowed scopes_ field contains **openid**.
+   a. Log in Sitefinity CMS backend with an administrative account.
+   b. In Sitefinity CMS backend, navigate to _Administration_ » _Settings_ » _Advanced_ » _Web services_.
+   c. Ensure that the _Default_ web service is installed and active for all content types. For more information, see [Configure the Types of a service](https://www.progress.com/documentation/sitefinity-cms/configure-the-types).
+   d. To authenticate the test framework requests, create a request access token for the web services. For more information, see [Request access token for calling web services](https://www.progress.com/documentation/sitefinity-cms/request-access-token-for-calling-web-services) with the additional step outlined below.
+   e. In Sitefinity CMS backend, navigate to _Administration_ » _Settings_ » _Advanced_ » _Authentication_ » _SecurityTokenService_ »  _IdentityServer_ » _Clients_ » <The client you have just created>. 
+   f. Ensure that the _Allowed scopes_ field contains **openid**.
 2. Clone this repository.
 3. Open _TestFrameworkCore.sln_ in Visual Studio.
 4. To configure the connection to a running Sitefinity instance, in _Tests_ project, open _App.config_ file, and set the following properties:
@@ -56,9 +56,7 @@ To execute the provided tests, perform the following:
 5. Restore the NuGet packages and Build the solution.
 6. In Visual Studio, open the _Test Explorer_ window and run the tests.
 
-## Writing tests
-
->**Note**: When you have created additional dynamic content types, the provided tests aren't enough. You should develop tests that cover the extra functionality you've built in Sitefinity CMS.
+>**NOTE**: When you have created additional dynamic content types, the provided tests aren't enough. You should develop tests that cover the extra functionality you've built in Sitefinity CMS.
 
 ## General guidelines
 
