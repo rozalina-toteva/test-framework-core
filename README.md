@@ -1,4 +1,4 @@
-Progress® Sitefinity® CMS test framework samples
+Progress Sitefinity CMS test framework samples
 ================================================
 
 >**Latest supported version**: Sitefinity CMS 12.2.7200.0
